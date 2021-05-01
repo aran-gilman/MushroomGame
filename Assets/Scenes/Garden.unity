@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planterPrefab: {fileID: 1252701846489733317, guid: 75d1316bd9427614eaaafcff72c2da71,
     type: 3}
+  startingMushroom: {fileID: 11400000, guid: b5be1f29887acf64db4888d0abcd9916, type: 2}
 --- !u!4 &73243120
 Transform:
   m_ObjectHideFlags: 0

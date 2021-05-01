@@ -5,36 +5,67 @@ using UnityEngine;
 public class PlanterManager : MonoBehaviour
 {
     public GameObject planterPrefab;
+    public Mushroom startingMushroom;
 
     public static void AddPlanter()
     {
-        data.planterData.Add(new Planter.Data());
+        PersistentData.planterData.Add(new Planter.Data());
+    }
+
+    public static void AddPoints(int quantity)
+    {
+        PersistentData.totalPoints += quantity;
+    }
+
+    public static void RemovePoints(int quantity)
+    {
+        PersistentData.totalPoints -= quantity;
+    }
+
+    public static void AddDiscoveredMushroom(Mushroom mushroom)
+    {
+        if (PersistentData.discoveredMushrooms.Contains(mushroom)) return;
+        PersistentData.discoveredMushrooms.Add(mushroom);
     }
 
     public static void Init()
     {
-        data = new Data();
+        persistentData = new Data();
         AddPlanter();
     }
 
     private class Data
     {
         public List<Planter.Data> planterData = new List<Planter.Data>();
+        public int totalPoints;
+        public List<Mushroom> discoveredMushrooms = new List<Mushroom>();
     }
-    private static Data data;
-    
+    private static Data persistentData;
+
+    private static Data PersistentData
+    {
+        get
+        {
+            if (persistentData == null)
+            {
+                Init();
+            }
+            return persistentData;
+        }
+    }
+
     private void Start()
     {
-        if (data == null)
-        {
-            Init();
-        }
-
-        for (int i = 0; i < data.planterData.Count; i++)
+        for (int i = 0; i < PersistentData.planterData.Count; i++)
         {
             Transform spot = transform.GetChild(i);
             GameObject planter = Instantiate(planterPrefab, spot);
-            planter.GetComponent<Planter>().data = data.planterData[i];
+            planter.GetComponent<Planter>().data = PersistentData.planterData[i];
+        }
+
+        if (PersistentData.discoveredMushrooms.Count == 0)
+        {
+            AddDiscoveredMushroom(startingMushroom);
         }
     }
 }

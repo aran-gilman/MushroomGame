@@ -7,4 +7,5 @@ public class Mushroom : ScriptableObject
     public string displayName;
     public int cost;
     public int value;
+    public bool plantable = true;
 }
