@@ -113,7 +113,7 @@ public class ForestGen : MonoBehaviour
                 case TerrainInfo.Tile.Feature.None:
                     break;
                 case TerrainInfo.Tile.Feature.PlayerSpawn:
-                    //player.transform.position = CellToWorld(tile);
+                    player.transform.position = CellToWorld(tile);
                     break;
                 case TerrainInfo.Tile.Feature.MushroomSpawn:
                     var mob = Instantiate(options.mushrooms[0].prefab);
