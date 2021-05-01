@@ -17,6 +17,16 @@ public class PlayerInput : MonoBehaviour
     
     private void Update()
     {
+
+        if (Input.GetButtonUp("MainMenu") || PlanterManager.PersistentData.gameOverTime <= Time.time)
+        {
+            SceneManager.LoadScene("MainMenu");
+            // TODO: Add points from the mushrooms that are still growing.
+            HighScoreTracker.LastScore = PlanterManager.PersistentData.totalPoints;
+            PlanterManager.Init();
+            return;
+        }
+
         rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"))
             .normalized * speed;
         if (Input.GetButtonUp("Interact"))
