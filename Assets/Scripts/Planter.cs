@@ -26,8 +26,11 @@ public class Planter : MonoBehaviour, IInteractable
         }
 
         data.mushroom = PlanterManager.PersistentData.discoveredMushrooms
-            .OrderByDescending(m => m.value).ElementAt(0);
+            .Where(m => m.cost <= PlanterManager.PersistentData.totalPoints)
+            .OrderByDescending(m => m.value)
+            .ElementAt(0);
         data.harvestTime = Time.time + data.mushroom.growTimeInSeconds;
+        PlanterManager.RemovePoints(data.mushroom.cost);
         return true;
     }
 }

@@ -69,10 +69,6 @@ public class PlanterManager : MonoBehaviour
             GameObject planter = Instantiate(planterPrefab, spot);
             planter.GetComponent<Planter>().data = PersistentData.planterData[i];
         }
-
-        if (PersistentData.discoveredMushrooms.Count == 0)
-        {
-            AddDiscoveredMushroom(startingMushroom);
-        }
+        AddDiscoveredMushroom(startingMushroom);
     }
 }
