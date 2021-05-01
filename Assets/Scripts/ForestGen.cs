@@ -25,6 +25,7 @@ public class ForestGen : MonoBehaviour
     {
         public GameObject prefab;
         public int weight = 1;
+        public bool rainOnly = false;
     }
 
     [Serializable]
