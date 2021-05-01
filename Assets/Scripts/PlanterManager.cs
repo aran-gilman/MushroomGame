@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlanterManager : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class PlanterManager : MonoBehaviour
     {
         persistentData = new Data();
         AddPlanter();
-        PersistentData.gameOverTime = Time.time + (15 * 60);
+        PersistentData.gameOverTime = Time.time + (30);
     }
 
     public class Data
@@ -70,5 +71,14 @@ public class PlanterManager : MonoBehaviour
             planter.GetComponent<Planter>().data = PersistentData.planterData[i];
         }
         AddDiscoveredMushroom(startingMushroom);
+    }
+
+    private void Update()
+    {
+        if (PersistentData.gameOverTime <= Time.time)
+        {
+            SceneManager.LoadScene("MainMenu");
+            Init();
+        }
     }
 }
