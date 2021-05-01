@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2462458159766591182}
   - component: {fileID: 5596608118677284142}
   - component: {fileID: -1565062904817315447}
+  - component: {fileID: -5145628176543638349}
   m_Layer: 0
   m_Name: Plantable Log
   m_TagString: Untagged
@@ -97,3 +98,29 @@ MonoBehaviour:
   data:
     mushroom: {fileID: 0}
     harvestTime: 0
+--- !u!61 &-5145628176543638349
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252701846489733317}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.24189156}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5162169}
+  m_EdgeRadius: 0
