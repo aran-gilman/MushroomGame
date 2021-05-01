@@ -15,4 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: a589c76d70e4c68409cd2cc9750555ff, type: 3}
   displayName: Golden Mushroom
   cost: 20
-  value: 50
+  value: 200
+  plantable: 1
+  growTimeInSeconds: 300

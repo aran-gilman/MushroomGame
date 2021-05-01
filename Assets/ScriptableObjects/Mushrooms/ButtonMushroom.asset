@@ -16,3 +16,5 @@ MonoBehaviour:
   displayName: Button Mushroom
   cost: 0
   value: 5
+  plantable: 1
+  growTimeInSeconds: 30
