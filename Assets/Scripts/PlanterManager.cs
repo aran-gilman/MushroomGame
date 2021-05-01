@@ -34,7 +34,7 @@ public class PlanterManager : MonoBehaviour
         AddPlanter();
     }
 
-    private class Data
+    public class Data
     {
         public List<Planter.Data> planterData = new List<Planter.Data>();
         public int totalPoints;
@@ -42,7 +42,7 @@ public class PlanterManager : MonoBehaviour
     }
     private static Data persistentData;
 
-    private static Data PersistentData
+    public static Data PersistentData
     {
         get
         {
