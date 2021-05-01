@@ -30,7 +30,7 @@ public class HudUpdater : MonoBehaviour
         if (Time.time - lastTimeUpdate >= 1)
         {
             timeText.text = string.Format(
-                timeFormat, PlanterManager.GameTimeRemaining());
+                timeFormat, (int)PlanterManager.GameTimeRemaining());
             lastTimeUpdate = Time.time;
         }
     }
