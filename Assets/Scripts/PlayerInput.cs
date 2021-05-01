@@ -18,11 +18,13 @@ public class PlayerInput : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
+    private AudioSource audioSource;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     
     private void Update()
@@ -39,15 +41,26 @@ public class PlayerInput : MonoBehaviour
 
         Vector2 direction =
             new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        if (direction.magnitude > 0)
         {
-            animator.SetFloat(
-                "Direction", (float)(direction.x > 0 ? Direction.Right : Direction.Left));
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            {
+                animator.SetFloat(
+                    "Direction", (float)(direction.x > 0 ? Direction.Right : Direction.Left));
+            }
+            else
+            {
+                animator.SetFloat(
+                    "Direction", (float)(direction.y > 0 ? Direction.Up : Direction.Down));
+            }
         }
-        else if (direction.magnitude > 0)
+        else
         {
-            animator.SetFloat(
-                "Direction", (float)(direction.y > 0 ? Direction.Up : Direction.Down));
+            audioSource.Stop();
         }
         rb.velocity =  direction * speed;
         if (Input.GetButtonUp("Interact"))
