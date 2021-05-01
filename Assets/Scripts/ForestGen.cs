@@ -12,6 +12,8 @@ public class ForestGen : MonoBehaviour
     public Vector2Int baseSize = new Vector2Int(10, 10);
     public Vector2Int scale = new Vector2Int(2, 2);
 
+    public static bool isLuckStoneActive;
+
     [Serializable]
     public class Style
     {
@@ -25,7 +27,7 @@ public class ForestGen : MonoBehaviour
     {
         public GameObject prefab;
         public int weight = 1;
-        public bool rainOnly = false;
+        public bool requiresLuckStone = false;
     }
 
     [Serializable]
@@ -122,11 +124,19 @@ public class ForestGen : MonoBehaviour
                     player.transform.position = CellToWorld(tile);
                     break;
                 case TerrainInfo.Tile.Feature.MushroomSpawn:
-                    var mob = Instantiate(options.mushrooms[0].prefab);
-                    mob.transform.position = CellToWorld(tile);
+                    List<SpawnInfo> mushrooms = options.mushrooms
+                        .Where(m => m.requiresLuckStone == isLuckStoneActive)
+                        .ToList();
+                    GameObject mushroom = Instantiate(
+                        SelectWeightedRandom(
+                            mushrooms.ToDictionary(e => e.prefab, e => e.weight)));
+                    mushroom.transform.position = CellToWorld(tile);
+                    isLuckStoneActive = false;
                     break;
                 case TerrainInfo.Tile.Feature.ItemSpawn:
-                    var item = Instantiate(options.items[0].prefab);
+                    GameObject item = Instantiate(
+                        SelectWeightedRandom(
+                            options.items.ToDictionary(e => e.prefab, e => e.weight)));
                     item.transform.position = CellToWorld(tile);
                     break;
             }
@@ -142,9 +152,8 @@ public class ForestGen : MonoBehaviour
     {
         return tilemaps.background.CellToWorld(LogicalToGraphical(tile.position)) + new Vector3(grid.cellSize.x * 0.5f, grid.cellSize.y * 0.5f, 0);
     }
-
-    // Start is called before the first frame update
-    void Start()
+    
+    private void Start()
     {
         tilemaps = new TilemapHolder
         {
@@ -157,5 +166,14 @@ public class ForestGen : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         SetupLevel();
+    }
+    
+    private static T SelectWeightedRandom<T>(IDictionary<T, int> options)
+    {
+        float val = UnityEngine.Random.Range(0, options.Values.Max() - 1);
+        return options
+            .OrderByDescending(kv => kv.Value)
+            .TakeWhile(kv => kv.Value > val)
+            .Last().Key;
     }
 }

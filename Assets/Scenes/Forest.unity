@@ -552,6 +552,7 @@ MonoBehaviour:
   randomSeed: -1
   baseSize: {x: 10, y: 10}
   scale: {x: 2, y: 2}
+  isLuckStoneActive: 0
   style:
     wall: {fileID: 11400000, guid: 3d6310f1211f66047bf6b96e0b84a84b, type: 2}
     ground: {fileID: 11400000, guid: 0a8ce24bc15fc65498ce9bd46a32e1cf, type: 2}
@@ -566,28 +567,28 @@ MonoBehaviour:
     - prefab: {fileID: 7962328235870555070, guid: 9047e4ec7c388ed4ca90e5c272b5db9e,
         type: 3}
       weight: 5
-      rainOnly: 0
+      requiresLuckStone: 0
     - prefab: {fileID: 3626491674946761053, guid: 5fcf1f6f39a4ece49a058fc8ef182bb9,
         type: 3}
       weight: 10
-      rainOnly: 0
+      requiresLuckStone: 0
     - prefab: {fileID: 2130572726278502969, guid: 4adc1d464c5f3c845b24c3f6aace353a,
         type: 3}
       weight: 1
-      rainOnly: 1
+      requiresLuckStone: 1
     items:
     - prefab: {fileID: 7787404321180327617, guid: 5865cba424aa7d341b200f3770106694,
         type: 3}
       weight: 10
-      rainOnly: 0
+      requiresLuckStone: 0
     - prefab: {fileID: 21209304598314236, guid: c369c06d4eaa40340977687220f5e565,
         type: 3}
       weight: 1
-      rainOnly: 0
+      requiresLuckStone: 0
     - prefab: {fileID: 4025749431259702644, guid: e40223d29230316478b6dd6573c1dd40,
         type: 3}
-      weight: 1
-      rainOnly: 0
+      weight: 2
+      requiresLuckStone: 0
 --- !u!1001 &8864789173045320410
 PrefabInstance:
   m_ObjectHideFlags: 0
