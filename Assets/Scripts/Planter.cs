@@ -13,18 +13,21 @@ public class Planter : MonoBehaviour, IInteractable
     }
     public Data data;
 
-    public void Interact()
+    public bool Interact()
     {
         if (data.mushroom != null)
         {
-            if (data.harvestTime <= Time.time)
+            if (data.harvestTime > Time.time)
             {
-                PlanterManager.AddPoints(data.mushroom.value);
-                data.mushroom = null;
+                return false;
             }
-            return;
+            PlanterManager.AddPoints(data.mushroom.value);
+            data.mushroom = null;
+            return true;
         }
 
         data.mushroom = PlanterManager.PersistentData.discoveredMushrooms[0];
+        data.harvestTime = Time.time + data.mushroom.growTimeInSeconds;
+        return true;
     }
 }

@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IInteractable
+﻿public interface IInteractable
 {
-    void Interact();
+    // Returns true if an interaction actually occurred, false otherwise.
+    bool Interact();
 }

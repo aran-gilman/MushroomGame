@@ -8,4 +8,5 @@ public class Mushroom : ScriptableObject
     public int cost;
     public int value;
     public bool plantable = true;
+    public int growTimeInSeconds = 300;
 }

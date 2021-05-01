@@ -4,12 +4,14 @@ public class Foragable : MonoBehaviour, IInteractable
 {
     public Mushroom mushroom;
 
-    public void Interact()
+    public bool Interact()
     {
         PlanterManager.AddPoints(mushroom.value);
         if (mushroom.plantable)
         {
             PlanterManager.AddDiscoveredMushroom(mushroom);
         }
+        Destroy(gameObject);
+        return true;
     }
 }
