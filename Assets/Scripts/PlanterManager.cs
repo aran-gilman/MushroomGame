@@ -72,13 +72,4 @@ public class PlanterManager : MonoBehaviour
         }
         AddDiscoveredMushroom(startingMushroom);
     }
-
-    private void Update()
-    {
-        if (PersistentData.gameOverTime <= Time.time)
-        {
-            SceneManager.LoadScene("MainMenu");
-            Init();
-        }
-    }
 }
