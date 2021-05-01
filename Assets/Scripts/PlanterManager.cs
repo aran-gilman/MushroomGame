@@ -28,10 +28,16 @@ public class PlanterManager : MonoBehaviour
         PersistentData.discoveredMushrooms.Add(mushroom);
     }
 
+    public static float GameTimeRemaining()
+    {
+        return PersistentData.gameOverTime - Time.time;
+    }
+
     public static void Init()
     {
         persistentData = new Data();
         AddPlanter();
+        PersistentData.gameOverTime = Time.time + (15 * 60);
     }
 
     public class Data
@@ -39,6 +45,7 @@ public class PlanterManager : MonoBehaviour
         public List<Planter.Data> planterData = new List<Planter.Data>();
         public int totalPoints;
         public List<Mushroom> discoveredMushrooms = new List<Mushroom>();
+        public float gameOverTime = -1;
     }
     private static Data persistentData;
 
