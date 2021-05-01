@@ -85,6 +85,11 @@ public class ForestGen : MonoBehaviour
             {
                 quantity = 10,
                 feature = TerrainInfo.Tile.Feature.MushroomSpawn
+            },
+            new Generators.SpawnFeatures
+            {
+                quantity = 2,
+                feature = TerrainInfo.Tile.Feature.ItemSpawn
             }
         };
 
@@ -118,6 +123,10 @@ public class ForestGen : MonoBehaviour
                 case TerrainInfo.Tile.Feature.MushroomSpawn:
                     var mob = Instantiate(options.mushrooms[0].prefab);
                     mob.transform.position = CellToWorld(tile);
+                    break;
+                case TerrainInfo.Tile.Feature.ItemSpawn:
+                    var item = Instantiate(options.items[0].prefab);
+                    item.transform.position = CellToWorld(tile);
                     break;
             }
         }

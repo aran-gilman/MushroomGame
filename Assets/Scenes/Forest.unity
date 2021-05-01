@@ -566,7 +566,10 @@ MonoBehaviour:
     - prefab: {fileID: 7962328235870555070, guid: 9047e4ec7c388ed4ca90e5c272b5db9e,
         type: 3}
       weight: 1
-    items: []
+    items:
+    - prefab: {fileID: 7787404321180327617, guid: 5865cba424aa7d341b200f3770106694,
+        type: 3}
+      weight: 0
 --- !u!1001 &8864789173045320410
 PrefabInstance:
   m_ObjectHideFlags: 0
