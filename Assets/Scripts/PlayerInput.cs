@@ -3,16 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum Direction
+{
+    Down = 0,
+    Left = 1,
+    Right = 2,
+    Up = 3
+}
+
 public class PlayerInput : MonoBehaviour
 {
     public float speed = 5.0f;
     public Collider2D interactionCollider;
 
-    private Rigidbody2D rb;   
+    private Rigidbody2D rb;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     
     private void Update()
@@ -27,8 +37,19 @@ public class PlayerInput : MonoBehaviour
             return;
         }
 
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"))
-            .normalized * speed;
+        Vector2 direction =
+            new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            animator.SetFloat(
+                "Direction", (float)(direction.x > 0 ? Direction.Right : Direction.Left));
+        }
+        else if (direction.magnitude > 0)
+        {
+            animator.SetFloat(
+                "Direction", (float)(direction.y > 0 ? Direction.Up : Direction.Down));
+        }
+        rb.velocity =  direction * speed;
         if (Input.GetButtonUp("Interact"))
         {
             List<Collider2D> colliders = new List<Collider2D>();
