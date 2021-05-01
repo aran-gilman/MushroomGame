@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Planter : MonoBehaviour, IInteractable
@@ -26,7 +25,8 @@ public class Planter : MonoBehaviour, IInteractable
             return true;
         }
 
-        data.mushroom = PlanterManager.PersistentData.discoveredMushrooms[0];
+        data.mushroom = PlanterManager.PersistentData.discoveredMushrooms
+            .OrderByDescending(m => m.value).ElementAt(0);
         data.harvestTime = Time.time + data.mushroom.growTimeInSeconds;
         return true;
     }
