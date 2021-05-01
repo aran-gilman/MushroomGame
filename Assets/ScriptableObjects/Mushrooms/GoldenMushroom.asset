@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074c7b460db4fea46ac1f921ff1ea558, type: 3}
+  m_Name: GoldenMushroom
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: a589c76d70e4c68409cd2cc9750555ff, type: 3}
+  displayName: Golden Mushroom
+  cost: 20
+  value: 50
