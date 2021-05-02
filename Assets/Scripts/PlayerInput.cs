@@ -43,6 +43,7 @@ public class PlayerInput : MonoBehaviour
             new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         if (direction.magnitude > 0)
         {
+            animator.SetBool("IsWalking", true);
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
@@ -61,6 +62,7 @@ public class PlayerInput : MonoBehaviour
         else
         {
             audioSource.Stop();
+            animator.SetBool("IsWalking", false);
         }
         rb.velocity =  direction * speed;
         if (Input.GetButtonUp("Interact"))
