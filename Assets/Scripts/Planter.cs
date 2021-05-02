@@ -22,6 +22,7 @@ public class Planter : MonoBehaviour, IInteractable
             }
             PlanterManager.AddPoints(data.mushroom.value);
             data.mushroom = null;
+            mushroomRenderer.sprite = null;
             return true;
         }
 
@@ -31,10 +32,12 @@ public class Planter : MonoBehaviour, IInteractable
             .ElementAt(0);
         data.harvestTime = Time.time + data.mushroom.growTimeInSeconds;
         PlanterManager.RemovePoints(data.mushroom.cost);
+        mushroomRenderer.sprite = data.mushroom.sprite;
         return true;
     }
 
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer mushroomRenderer;
 
     private bool CanHarvest() => data.harvestTime < Time.time;
     private bool IsEmpty() => data.mushroom == null;
@@ -42,15 +45,12 @@ public class Planter : MonoBehaviour, IInteractable
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        mushroomRenderer = transform.parent.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (IsEmpty())
-        {
-            spriteRenderer.color = Color.red;
-        }
-        else if (CanHarvest())
+        if (!IsEmpty() && CanHarvest())
         {
             spriteRenderer.color = Color.green;
         }
