@@ -39,6 +39,7 @@ public class PlayerInput : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
             foreach (Planter.Data dat in PlanterManager.PersistentData.planterData)
             {
+                if (dat.mushroom == null) continue;
                 PlanterManager.PersistentData.totalPoints += dat.mushroom.value * 5;
             }
             HighScoreTracker.LastScore = PlanterManager.PersistentData.totalPoints;
