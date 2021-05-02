@@ -1,4 +1,4 @@
-# Mushroom Game (Spring 2D Jam 2021)
+# Mushroom Collector (Spring 2D Jam 2021)
 
 Collect and grow as many mushrooms as you can within the time limit to earn a high score!
 
@@ -6,4 +6,5 @@ Originally developed for submission to Spring 2D Jam 2021: https://itch.io/jam/s
 
 All assets except for the following were created within the jam's time span:
 * Coppertech 8x Player.png
-* GeneratorAlgorithms.cs and TerrainInfo.cs (originally created for a different personal project, adapted for this game)
+* GeneratorAlgorithms.cs, TerrainInfo.cs, and parts of ForestGen.cs
+* All fonts, music, and SFX (CC0 assets sourced from opengameart.org; see associated directories for attribution information.)
