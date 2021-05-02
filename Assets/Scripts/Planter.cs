@@ -14,9 +14,9 @@ public class Planter : MonoBehaviour, IInteractable
 
     public bool Interact()
     {
-        if (data.mushroom != null)
+        if (!IsEmpty())
         {
-            if (data.harvestTime > Time.time)
+            if (!CanHarvest())
             {
                 return false;
             }
@@ -32,5 +32,31 @@ public class Planter : MonoBehaviour, IInteractable
         data.harvestTime = Time.time + data.mushroom.growTimeInSeconds;
         PlanterManager.RemovePoints(data.mushroom.cost);
         return true;
+    }
+
+    private SpriteRenderer spriteRenderer;
+
+    private bool CanHarvest() => data.harvestTime < Time.time;
+    private bool IsEmpty() => data.mushroom == null;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (IsEmpty())
+        {
+            spriteRenderer.color = Color.red;
+        }
+        else if (CanHarvest())
+        {
+            spriteRenderer.color = Color.green;
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+        }
     }
 }
