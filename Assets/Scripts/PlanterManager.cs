@@ -46,6 +46,7 @@ public class PlanterManager : MonoBehaviour
         float nextHarvest = 0;
         foreach (Planter.Data dat in PersistentData.planterData)
         {
+            if (dat.mushroom == null) continue;
             if (nextHarvest == 0 || dat.harvestTime < nextHarvest)
             {
                 nextHarvest = dat.harvestTime;
