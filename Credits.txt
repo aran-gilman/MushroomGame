@@ -1,0 +1,22 @@
+File: leaves02.ogg
+Use in game: footstep sounds
+Author: TinyWorlds
+License: CC0 (Public Domain)
+Source: https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud
+
+File: TheForest.wav
+Use in game: background music
+Author: Wolfgang
+License: CC0 (Public Domain)
+Source: https://opengameart.org/content/8-bit-forest-theme
+
+File: select_002.ogg
+Use in game: interaction sfx
+Author: Kenney (www.kenney.nl)
+License: CC0 (Public Domain)
+Source: https://opengameart.org/content/interface-sounds
+
+File: *.ttf (i.e. all fonts)
+Author: Kenney (www.kenney.nl)
+License: CC0 (Public Domain)
+Source: https://opengameart.org/content/kenney-fonts
