@@ -14,17 +14,21 @@ public enum Direction
 public class PlayerInput : MonoBehaviour
 {
     public float speed = 5.0f;
-    public Collider2D interactionCollider;
+    public GameObject interactionHelper;
 
     private Rigidbody2D rb;
     private Animator animator;
-    private AudioSource audioSource;
+    private AudioSource footstepPlayer;
+    private AudioSource interactionSoundPlayer;
+    private Collider2D interactionCollider;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        footstepPlayer = GetComponent<AudioSource>();
+        interactionCollider = interactionHelper.GetComponent<Collider2D>();
+        interactionSoundPlayer = interactionHelper.GetComponent<AudioSource>();
     }
     
     private void Update()
@@ -44,9 +48,9 @@ public class PlayerInput : MonoBehaviour
         if (direction.magnitude > 0)
         {
             animator.SetBool("IsWalking", true);
-            if (!audioSource.isPlaying)
+            if (!footstepPlayer.isPlaying)
             {
-                audioSource.Play();
+                footstepPlayer.Play();
             }
             if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
@@ -61,7 +65,7 @@ public class PlayerInput : MonoBehaviour
         }
         else
         {
-            audioSource.Stop();
+            footstepPlayer.Stop();
             animator.SetBool("IsWalking", false);
         }
         rb.velocity =  direction * speed;
@@ -76,6 +80,7 @@ public class PlayerInput : MonoBehaviour
                 IInteractable interactable = col.GetComponent<IInteractable>();
                 if (interactable != null && interactable.Interact() == true)
                 {
+                    interactionSoundPlayer.Play();
                     break;
                 }
             }
