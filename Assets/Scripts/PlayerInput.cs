@@ -37,7 +37,10 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButtonUp("MainMenu") || PlanterManager.PersistentData.gameOverTime <= Time.time)
         {
             SceneManager.LoadScene("MainMenu");
-            // TODO: Add points from the mushrooms that are still growing.
+            foreach (Planter.Data dat in PlanterManager.PersistentData.planterData)
+            {
+                PlanterManager.PersistentData.totalPoints += dat.mushroom.value * 5;
+            }
             HighScoreTracker.LastScore = PlanterManager.PersistentData.totalPoints;
             PlanterManager.Init();
             return;
