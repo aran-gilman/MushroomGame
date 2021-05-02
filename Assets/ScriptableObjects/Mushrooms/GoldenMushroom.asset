@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a589c76d70e4c68409cd2cc9750555ff, type: 3}
   displayName: Golden Mushroom
-  cost: 20
-  value: 500
+  cost: 10
+  value: 100
   plantable: 1
-  growTimeInSeconds: 120
+  growTimeInSeconds: 60

@@ -22,7 +22,7 @@ public class Planter : MonoBehaviour, IInteractable
             {
                 return false;
             }
-            PlanterManager.AddPoints(data.mushroom.value);
+            PlanterManager.AddPoints(data.mushroom.value * 5);
             data.mushroom = null;
             mushroomRenderer.sprite = null;
             PlanterManager.PersistentData.planterData[index] = data;

@@ -38,7 +38,7 @@ public class PlanterManager : MonoBehaviour
     {
         persistentData = new Data();
         AddPlanter();
-        PersistentData.gameOverTime = Time.time + (5 * 60);
+        PersistentData.gameOverTime = Time.time + (3 * 60);
     }
 
     public class Data

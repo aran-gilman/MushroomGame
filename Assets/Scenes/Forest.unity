@@ -639,7 +639,7 @@ MonoBehaviour:
       requiresLuckStone: 0
     - prefab: {fileID: 3626491674946761053, guid: 5fcf1f6f39a4ece49a058fc8ef182bb9,
         type: 3}
-      weight: 10
+      weight: 20
       requiresLuckStone: 0
     - prefab: {fileID: 2130572726278502969, guid: 4adc1d464c5f3c845b24c3f6aace353a,
         type: 3}

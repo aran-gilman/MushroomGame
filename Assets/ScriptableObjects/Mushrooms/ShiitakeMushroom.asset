@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: bcf28c1c179639e4c8f42a625ca4b66e, type: 3}
   displayName: Shiitake
-  cost: 10
-  value: 50
+  cost: 5
+  value: 10
   plantable: 1
-  growTimeInSeconds: 30
+  growTimeInSeconds: 15
