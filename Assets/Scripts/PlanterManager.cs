@@ -41,6 +41,19 @@ public class PlanterManager : MonoBehaviour
         PersistentData.gameOverTime = Time.time + (3 * 60);
     }
 
+    public static float GetNextHarvestTime()
+    {
+        float nextHarvest = 0;
+        foreach (Planter.Data dat in PersistentData.planterData)
+        {
+            if (nextHarvest == 0 || dat.harvestTime < nextHarvest)
+            {
+                nextHarvest = dat.harvestTime;
+            }
+        }
+        return nextHarvest;
+    }
+
     public class Data
     {
         public List<Planter.Data> planterData = new List<Planter.Data>();

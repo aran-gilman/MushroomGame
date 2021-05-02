@@ -25,8 +25,9 @@ public class HudUpdater : MonoBehaviour
     {
         scoreText.text = string.Format(
             scoreFormat, PlanterManager.PersistentData.totalPoints);
+        int nextHarvest = (int)(PlanterManager.GetNextHarvestTime() - Time.time);
         nextMushroomText.text = string.Format(
-            nextMushroomFormat, 0);
+            nextMushroomFormat, Mathf.Max(nextHarvest, 0));
         if (Time.time - lastTimeUpdate >= 1)
         {
             timeText.text = string.Format(
