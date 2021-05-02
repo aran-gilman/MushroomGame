@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Planter : MonoBehaviour, IInteractable
 {
+    public int index;
+
     [Serializable]
     public class Data
     {
@@ -23,6 +25,7 @@ public class Planter : MonoBehaviour, IInteractable
             PlanterManager.AddPoints(data.mushroom.value);
             data.mushroom = null;
             mushroomRenderer.sprite = null;
+            PlanterManager.PersistentData.planterData[index] = data;
             return true;
         }
 
@@ -32,7 +35,7 @@ public class Planter : MonoBehaviour, IInteractable
             .ElementAt(0);
         data.harvestTime = Time.time + data.mushroom.growTimeInSeconds;
         PlanterManager.RemovePoints(data.mushroom.cost);
-        mushroomRenderer.sprite = data.mushroom.sprite;
+        PlanterManager.PersistentData.planterData[index] = data;
         return true;
     }
 
@@ -50,9 +53,13 @@ public class Planter : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if (!IsEmpty() && CanHarvest())
+        if (!IsEmpty())
         {
-            spriteRenderer.color = Color.green;
+            mushroomRenderer.sprite = data.mushroom.sprite;
+            if (CanHarvest())
+            {
+                spriteRenderer.color = Color.green;
+            }
         }
         else
         {

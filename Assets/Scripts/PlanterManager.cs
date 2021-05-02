@@ -67,8 +67,10 @@ public class PlanterManager : MonoBehaviour
         for (int i = 0; i < PersistentData.planterData.Count; i++)
         {
             Transform spot = transform.GetChild(i);
-            GameObject planter = Instantiate(planterPrefab, spot);
-            planter.GetComponent<Planter>().data = PersistentData.planterData[i];
+            GameObject obj = Instantiate(planterPrefab, spot);
+            Planter planter = obj.GetComponent<Planter>();
+            planter.data = PersistentData.planterData[i];
+            planter.index = i;
         }
         AddDiscoveredMushroom(startingMushroom);
     }
