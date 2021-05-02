@@ -39,7 +39,9 @@ public class ForestGen : MonoBehaviour
         public int birthLimit = 3;
         public int cellularAutomataIterations = 1;
         public int maxPlayerPlacementTries = 5;
+        public int numMushroomsSpawned = 10;
         public List<SpawnInfo> mushrooms = new List<SpawnInfo>();
+        public int numItemsSpawned = 2;
         public List<SpawnInfo> items = new List<SpawnInfo>();
     }
     public Options options;
@@ -87,12 +89,12 @@ public class ForestGen : MonoBehaviour
             new Generators.PruneUnreachableAreas(),
             new Generators.SpawnFeatures
             {
-                quantity = 10,
+                quantity = options.numMushroomsSpawned,
                 feature = TerrainInfo.Tile.Feature.MushroomSpawn
             },
             new Generators.SpawnFeatures
             {
-                quantity = 2,
+                quantity = options.numItemsSpawned,
                 feature = TerrainInfo.Tile.Feature.ItemSpawn
             }
         };
