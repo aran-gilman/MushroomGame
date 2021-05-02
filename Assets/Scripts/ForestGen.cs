@@ -52,6 +52,7 @@ public class ForestGen : MonoBehaviour
     private TilemapHolder tilemaps;
     
     private GameObject player;
+    private GameObject teleporter;
 
     private Grid grid;
 
@@ -121,7 +122,9 @@ public class ForestGen : MonoBehaviour
                 case TerrainInfo.Tile.Feature.None:
                     break;
                 case TerrainInfo.Tile.Feature.PlayerSpawn:
-                    player.transform.position = CellToWorld(tile);
+                    Vector3 pos = CellToWorld(tile);
+                    player.transform.position = pos;
+                    teleporter.transform.position = pos;
                     break;
                 case TerrainInfo.Tile.Feature.MushroomSpawn:
                     List<SpawnInfo> mushrooms = options.mushrooms
@@ -164,6 +167,7 @@ public class ForestGen : MonoBehaviour
         grid = GetComponent<Grid>();
         
         player = GameObject.FindWithTag("Player");
+        teleporter = GameObject.FindWithTag("Teleporter");
 
         SetupLevel();
     }

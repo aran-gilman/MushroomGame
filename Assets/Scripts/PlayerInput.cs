@@ -86,9 +86,21 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
+
         if (Input.GetButtonUp("Teleport"))
         {
-            Teleport();
+            List<Collider2D> colliders = new List<Collider2D>();
+            interactionCollider.OverlapCollider(
+                   new ContactFilter2D().NoFilter(),
+                   colliders);
+            foreach (Collider2D col in colliders)
+            {
+                if (col.CompareTag("Teleporter"))
+                {
+                    Teleport();
+                    break;
+                }
+            }
         }
     }
 
