@@ -39,6 +39,7 @@ public class PlanterManager : MonoBehaviour
         persistentData = new Data();
         AddPlanter();
         PersistentData.gameOverTime = Time.time + (3 * 60);
+        ForestGen.isLuckStoneActive = false;
     }
 
     public static float GetNextHarvestTime()

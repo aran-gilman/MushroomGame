@@ -36,7 +36,6 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButtonUp("MainMenu") || PlanterManager.PersistentData.gameOverTime <= Time.time)
         {
-            SceneManager.LoadScene("MainMenu");
             foreach (Planter.Data dat in PlanterManager.PersistentData.planterData)
             {
                 if (dat.mushroom == null) continue;
@@ -44,6 +43,7 @@ public class PlayerInput : MonoBehaviour
             }
             HighScoreTracker.LastScore = PlanterManager.PersistentData.totalPoints;
             PlanterManager.Init();
+            SceneManager.LoadScene("MainMenu");
             return;
         }
 
